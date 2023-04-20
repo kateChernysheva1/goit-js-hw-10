@@ -13,15 +13,17 @@ input.addEventListener('input', lodash(inputSearch, DEBOUNCE_DELAY));
 
 function inputSearch(el) {
   const value = el.target.value.trim();
-  textdiv.innerHTML = '';
-  text.innerHTML = '';
 
   if (value) {
     fetchCountries(value)
       .then(data => {
+        textdiv.innerHTML = '';
+        text.innerHTML = '';
         checkData(data);
       })
       .catch(() => {
+        textdiv.innerHTML = '';
+        text.innerHTML = '';
         Notiflix.Notify.failure('Oops, there is no country with that name');
       });
   }
